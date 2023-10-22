@@ -1,0 +1,33 @@
+Hardware Required
+
+Major Components:
+-   Fiber Laser
+    Coherent Sapphire LPX 530-300 Laser 
+    530nm light & 330mW
+-   Lens 1
+    75 mm achromatic doublet 
+    Thorlabs AC254-075-A-ML
+-   Fourier plane
+    DLP Lightcrafter 6500 EVM from Texas Instruments
+    Resolution: 1920 * 1080
+    using Pycrafter 6500 library to control
+    7575 Hz with a 40 MHz pixel clock at the camera for a final framerate of 28.64 Hz
+    256 projector patterns per frame
+-   Lens 2 (converging)
+    105 mm f/2.8 DSLR lens 
+    Nikon AF Micro-Nikkor
+-   Knife Edge
+-   Objective Lens 
+    9 mm f /1.4 lens 
+    Fujinon HF9HA
+-   Rolling-Shutter Camera
+    UI-3240CP- NIR camera
+    with 8mm f/1.4 lens
+    operated in 2× binning mode for an image resolution of 640 × 512
+    set the exposure of the camera to the pattern exposure time of the DMD
+    placed about 18 cm from the projector’s center of projection
+
+Supplementary Hardware:
+-   filter to reject ambient light
+    531nm bandpass filter
+    10nm FWHM
