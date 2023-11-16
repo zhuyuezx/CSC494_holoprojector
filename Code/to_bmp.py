@@ -49,6 +49,7 @@ def main():
             except:
                 print("Error with file: " + file)
                 continue
+            print(f"File {file} converted to bmp format")
     print("Done!")
 
 if __name__ == "__main__":
