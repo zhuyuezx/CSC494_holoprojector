@@ -23,10 +23,9 @@ def main():
         try:
             img = cv.imread(args.path)
             img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-            img = Image.fromarray(img)
-            img.resize((args.target_width, args.target_height))
+            img = cv.resize(img, (args.target_width, args.target_height))
             # replace file extension with .bmp
-            img.save(args.save_path + "/" + args.path.split("/")[-1].split(".")[0] + ".bmp")
+            cv.imwrite(args.save_path + "/" + args.path.split("/")[-1].split(".")[0] + ".bmp", img)
         except:
             raise Exception("Error with file: " + args.path)
     else:
@@ -42,10 +41,9 @@ def main():
             try:
                 img = cv.imread(args.path + "/" + file)
                 img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-                img = Image.fromarray(img)
-                img.resize((args.target_width, args.target_height))
+                img = cv.resize(img, (args.target_width, args.target_height))
                 # replace file extension with .bmp
-                img.save(args.save_path + "/" + file.split(".")[0] + ".bmp")
+                cv.imwrite(args.save_path + "/" + file.split(".")[0] + ".bmp", img)
             except:
                 print("Error with file: " + file)
                 continue
