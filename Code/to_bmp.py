@@ -10,8 +10,8 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--path", type=str, default="imgs/target_raw.jpg")
 parser.add_argument("--save_path", type=str, default="imgs")
 parser.add_argument("--folder", type=int, default=0)
-parser.add_argument("--target_width", type=int, default=1920)
-parser.add_argument("--target_height", type=int, default=1080)
+parser.add_argument("--w", type=int, default=2716)
+parser.add_argument("--h", type=int, default=1600)
 
 def main():
     args = parser.parse_args()
@@ -23,7 +23,7 @@ def main():
         try:
             img = cv.imread(args.path)
             img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-            img = cv.resize(img, (args.target_width, args.target_height))
+            img = cv.resize(img, (args.w, args.h))
             # replace file extension with .bmp
             cv.imwrite(args.save_path + "/" + args.path.split("/")[-1].split(".")[0] + ".bmp", img)
         except:
@@ -41,7 +41,7 @@ def main():
             try:
                 img = cv.imread(args.path + "/" + file)
                 img = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
-                img = cv.resize(img, (args.target_width, args.target_height))
+                img = cv.resize(img, (args.w, args.h))
                 # replace file extension with .bmp
                 cv.imwrite(args.save_path + "/" + file.split(".")[0] + ".bmp", img)
             except:
