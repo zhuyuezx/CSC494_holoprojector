@@ -1,0 +1,6 @@
+MotherBoard: 175mm * 125mm
+DMD Surface: 120mm * 83.10mm
+cable lens: 12 inch (30.48cm)
+distance from corner to corner hole: 5mm (rough)
+distance from left to cable hole: 40mm~40.5mm(rough)
+distance from right to cable hole: 40mm~40.5mm(rough)
