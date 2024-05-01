@@ -230,7 +230,7 @@ def main(config):
         cv2.imshow("SimpleLive_Python_uEye_OpenCV", frame)
 
         # Press q if you want to end the loop
-        if ms_per_frame * cnt >= cur_exposure_time * 2 + 5000:
+        if ms_per_frame * cnt >= cur_exposure_time * 2 + 10000:
             cv2.imwrite(f'./saved_frames/image{save_idx}.bmp', frame)
             print(f'image{save_idx}.bmp is saved')
             save_idx += 1
