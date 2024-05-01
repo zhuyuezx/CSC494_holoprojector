@@ -60,7 +60,7 @@ def main(config):
     channels = 3                    #3: channels for color mode(RGB); take 1 channel for monochrome
     m_nColorMode = ueye.INT()		# Y8/RGB16/RGB24/REG32
     bytes_per_pixel = int(nBitsPerPixel / 8)
-    ms_per_frame = 3.5
+    ms_per_frame = 5
     #---------------------------------------------------------------------------------------------------------------------------------------
     print("START")
     print()
@@ -184,13 +184,14 @@ def main(config):
     exposure_levels = config["exposureLevels"]
     exposure_levels = [ueye.double(x) for x in exposure_levels]
     gain_levels = config["gainLevels"]
+    nRet = ueye.is_Exposure(hCam, ueye.IS_EXPOSURE_CMD_SET_LONG_EXPOSURE_ENABLE, ueye.INT(1), ueye.sizeof(ueye.INT()))
     # print(exposure_levels)
     #---------------------------------------------------------------------------------------------------------------------------------------
     cnt, save_idx = 0, 0
     change_config, config_idx = True, 0
     cur_exposure_time = ueye.DOUBLE(0)
     # Continuous image display
-    while(nRet == ueye.IS_SUCCESS and config_idx < config["frameCnt"]):
+    while(nRet == ueye.IS_SUCCESS and save_idx < config["frameCnt"]):
         
         if change_config:
             new_exposure = exposure_levels[config_idx]
@@ -229,13 +230,13 @@ def main(config):
         cv2.imshow("SimpleLive_Python_uEye_OpenCV", frame)
 
         # Press q if you want to end the loop
-        if ms_per_frame * cnt >= cur_exposure_time * 1.2:
+        if ms_per_frame * cnt >= cur_exposure_time * 2 + 5000:
             cv2.imwrite(f'./saved_frames/image{save_idx}.bmp', frame)
             print(f'image{save_idx}.bmp is saved')
             save_idx += 1
             cnt = 0
             change_config = True
-        
+        # print(cnt)
         cnt += 1
 
     # Releases an image memory that was allocated using is_AllocImageMem() and removes it from the driver management
@@ -272,4 +273,5 @@ def parse_json():
 
 if __name__ == "__main__":
     config = parse_json()
-    main(config)
+    if config:
+        main(config)

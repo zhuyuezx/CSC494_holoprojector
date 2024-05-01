@@ -199,7 +199,7 @@ cnt = 0
 start_time = time.time()
 # Continuous image display
 while(nRet == ueye.IS_SUCCESS):
-    print(cnt)
+    # print(cnt)
     cnt += 1
     # In order to display the image in an OpenCV window we need to...
     # ...extract the data of our image memory
